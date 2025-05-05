@@ -52,7 +52,7 @@ class GameObject():
 class Apple(GameObject):
     def __init__(self):
         self.position = self.randomize_position()
-        self.body_color = (255, 0, 0)
+        self.body_color = APPLE_COLOR
     
     def randomize_position(self):
         return (randint(0, GRID_WIDTH) * GRID_SIZE, randint(0, GRID_HEIGHT) * GRID_SIZE)
@@ -71,7 +71,7 @@ class Snake(GameObject):
         self.positions = list(self.position)
         self.direction = RIGHT
         self.next_direction = None
-        self.body_color = (0, 255, 0)
+        self.body_color = SNAKE_COLOR
         self.last = None
     
     # Метод обновления направления после нажатия на кнопку
