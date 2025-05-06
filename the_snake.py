@@ -51,11 +51,11 @@ class GameObject():
 
 class Apple(GameObject):
     def __init__(self):
-        self.position = self.randomize_position()
+        self.randomize_position()
         self.body_color = APPLE_COLOR
     
     def randomize_position(self):
-        return (randint(0, GRID_WIDTH) * GRID_SIZE, randint(0, GRID_HEIGHT) * GRID_SIZE)
+        self.position = (randint(0, GRID_WIDTH - 1) * GRID_SIZE, randint(0, GRID_HEIGHT - 1) * GRID_SIZE)
     
     # Метод draw класса Apple
     def draw(self):
@@ -68,7 +68,7 @@ class Snake(GameObject):
     def __init__(self):
         super().__init__()
         self.length = 1
-        self.positions = list(self.position)
+        self.positions = [self.position]
         self.direction = RIGHT
         self.next_direction = None
         self.body_color = SNAKE_COLOR
@@ -115,7 +115,7 @@ class Snake(GameObject):
 
     def reset(self):
         self.length = 1
-        self.positions = list(self.position)
+        self.positions = [self.position]
         self.direction = choice([UP, DOWN, LEFT, RIGHT])
         self.next_direction = None
         self.last = None
