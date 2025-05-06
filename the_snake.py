@@ -45,7 +45,7 @@ class GameObject():
     def __init__(self):
         self.position = ((SCREEN_WIDTH // 2), (SCREEN_HEIGHT // 2))
         self.body_color = None
-    
+
     def draw(self):
         """Абстрактный метод отрисовки на экране объекта."""
         pass
@@ -57,14 +57,14 @@ class Apple(GameObject):
     def __init__(self):
         self.randomize_position()
         self.body_color = APPLE_COLOR
-    
+
     def randomize_position(self):
         """Устанавливает случайное положение яблока на игровом поле."""
         self.position = (
             randint(0, GRID_WIDTH - 1) * GRID_SIZE,
             randint(0, GRID_HEIGHT - 1) * GRID_SIZE
         )
-    
+
     def draw(self):
         """Отрисовывает яблоко на игровой поверхности."""
         rect = pygame.Rect(self.position, (GRID_SIZE, GRID_SIZE))
@@ -83,7 +83,7 @@ class Snake(GameObject):
         self.next_direction = None
         self.body_color = SNAKE_COLOR
         self.last = None
-    
+
     def update_direction(self):
         """Обновляет направление движения змейки."""
         if self.next_direction:
@@ -121,7 +121,7 @@ class Snake(GameObject):
         if self.last:
             last_rect = pygame.Rect(self.last, (GRID_SIZE, GRID_SIZE))
             pygame.draw.rect(screen, BOARD_BACKGROUND_COLOR, last_rect)
-    
+
     def get_head_position(self):
         """Возвращает позицию головы змейки."""
         return self.positions[0]
